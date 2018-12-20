@@ -1,7 +1,19 @@
-<h2>{{hero.name}} Details</h2>
-<div>
-    <label>name:
-        <input [(ngModel)]="hero.name" placeholder="Bote o nome aqui, em nome de Jesus">
-    </label>
+
+<div *ngIf='selectedHero'>
+    <h2>{{selectedHero.name | uppercase}} Detalhes</h2>
+    <div>
+        <span>id: </span>{{selectedHero.id}}
+    </div>
+    <div>
+        <label>name: 
+            <input [(ngModel)]='selectedHero.name' placeholder="name">
+        </label>
+    </div>
 </div>
 
+<h2>Os melhores heróis do mundo!</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </li>
+</ul>
